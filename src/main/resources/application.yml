@@ -1,0 +1,38 @@
+# Spring Application
+spring:
+  application:
+    name: ${APPLICATION.NAME}
+  datasource:
+    url: jdbc:postgresql://${DB.HOST}:${DB.PORT}/${DB.NAME}
+    username: ${DB.USERNAME}
+    password: ${DB.PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  config:
+    import: env.yml
+
+# Security
+security:
+  jwt:
+    secret-key: ${JWT.SECRET-KEY}
+    expiration-time: ${JWT.EXPIRATION-TIME}
+
+# Server
+server:
+  servlet:
+    context-path: ${SERVER.CONTEXT-PATH}
+  port: ${SERVER.PORT}
+
+# Logging
+logging:
+  level:
+    org:
+      springframework:
+        security: ${LOG.LEVEL}
